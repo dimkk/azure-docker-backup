@@ -26,11 +26,11 @@ if [ -n ${AZ_USER} ]; then
 fi
 
 MAX_BACKUPS=${MAX_BACKUPS}
-if [ -n ${BACKUP_FILE_EXT} ]; then
-    BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H).\${BACKUP_FILE_EXT}
-else
-    BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H)
-fi
+#if [ -n ${BACKUP_FILE_EXT} ]; then
+#    BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H).\${BACKUP_FILE_EXT}
+#else
+BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H)
+#fi
 
 echo "=> Backup started: \${BACKUP_NAME}"
 if [ -n ${AZ_USER} ]; then
