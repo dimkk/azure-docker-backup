@@ -20,6 +20,7 @@ cat <<EOF >> /backup.sh
 #!/bin/bash
 
 if [ -n ${AZ_USER} ]; then
+    az account clear
     az login --service-principal -u \${AZ_USER} -p "\${AZ_SECRET}" --tenant \${AZ_AD_TENANT_ID}
     az storage directory create -n \${AZ_STORAGE_FOLDER} --share-name \${AZ_STORAGE_SHARE} --connection-string "\${AZ_STORAGE_CS}"
 fi
