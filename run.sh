@@ -6,6 +6,7 @@ AZ_AD_TENANT_ID=${AZ_AD_TENANT_ID}
 AZ_STORAGE_FOLDER=${AZ_STORAGE_FOLDER}
 AZ_STORAGE_SHARE=${AZ_STORAGE_SHARE}
 AZ_STORAGE_CS=${AZ_STORAGE_CS}
+BACKUP_FILE_EXT=${BACKUP_FILE_EXT}
 
 [ -z "${AZ_USER}" ] && { echo "=> AZ_USER cannot be empty" && exit 1; }
 [ -z "${AZ_SECRET}" ] && { echo "=> AZ_SECRET cannot be empty" && exit 1; }
@@ -24,8 +25,11 @@ if [ -n ${AZ_USER} ]; then
 fi
 
 MAX_BACKUPS=${MAX_BACKUPS}
-
-BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H\%M\%S).*
+if [ -n ${BACKUP_FILE_EXT} ]; then
+    BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H).\${BACKUP_FILE_EXT}
+else
+    BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H)
+fi
 
 echo "=> Backup started: \${BACKUP_NAME}"
 if [ -n ${AZ_USER} ]; then

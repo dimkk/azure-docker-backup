@@ -12,6 +12,7 @@ This image runs mysqldump to backup data using cronjob to folder `/backup` and a
         --env AZ_STORAGE_SHARE=[Share name] \
         --env AZ_STORAGE_FOLDER=[Folder to save] \
         --env AZ_STORAGE_CS=[Storage connection string] \
+        --env BACKUP_FILE_EXT=[leave blank if none] \
         dimkk/azure-docker-backup
 
 ## Parameters
@@ -25,6 +26,7 @@ This image runs mysqldump to backup data using cronjob to folder `/backup` and a
     AZ_STORAGE_FOLDER azure folder in share to save backups
     AZ_STORAGE_SHARE azure share name - create it yourself!
     AZ_STORAGE_CS   azure storage connection string
+    BACKUP_FILE_EXT leave blank if none
 
 ## Volume
     There must be volumes from sql or mongo backup containers
